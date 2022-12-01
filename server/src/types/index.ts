@@ -7,9 +7,9 @@ export type Track = {
   id: string;
   title: string;
   thumbnail: string;
-  streamUrl: string;
-  publishedOn: string;
-  views: number | string;
+  streamUrl?: string;
+  publishedOn?: string;
+  views?: number | string;
   duration: number | string;
   artist: Artist;
 };

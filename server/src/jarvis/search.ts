@@ -2,12 +2,7 @@ import puppeteer from "puppeteer";
 import { Track } from "../types";
 import getPropertyValue from "./utils/getPropertyValue";
 
-export type NonStreamableTrack = Omit<
-  Track,
-  "streamUrl" | "publishedOn" | "views"
->;
-
-export default async function (query: string): Promise<NonStreamableTrack[]> {
+export default async function (query: string): Promise<Track[]> {
   try {
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
