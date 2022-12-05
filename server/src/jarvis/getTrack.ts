@@ -1,10 +1,9 @@
 import makeComand from "./utils/command";
 
-export default async function (id: string) {
+export default async function (trackId: string) {
   try {
-    const command = makeComand(
-      `youtube-dl -f bestaudio https://youtu.be/${id} --skip-download --print-json`
-    );
+    const command = makeComand();
+    const cmd = `youtube-dl -f bestaudio https://youtu.be/${trackId} --skip-download --print-json`;
 
     const {
       thumbnail,
@@ -13,16 +12,16 @@ export default async function (id: string) {
       duration,
       url,
       view_count,
-    } = JSON.parse((await command.run()) ?? "");
+    } = JSON.parse((await command.run(cmd)) ?? "");
 
     const [name, title] = _title.split("-");
     const artist = Object.freeze({ name, avatar: "" });
 
     const song = Object.freeze({
-      id,
       title,
       duration,
       thumbnail,
+      id: trackId,
       streamUrl: url,
       views: view_count,
       publishedOn: upload_date,

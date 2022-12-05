@@ -1,12 +1,18 @@
-import express, { Request, Response } from "express";
+import { Request, Response } from "express";
+import { createClient } from "redis";
+import makeCacheService from "./config/cache";
+import logger from "./config/logger";
+import makeServer from "./config/server";
+import { PORT } from "./config/vars";
 
-const app = express();
-const port = 8000;
+import makeJarvis from "./jarvis";
 
-app.get("/", (req: Request, res: Response) => {
-  res.send({ message: "Hello world!" });
-});
+const jarvis = makeJarvis();
+const client = createClient();
 
-app.listen(port, () => {
-  console.log("App is running on port: " + port + ". http://localhost:" + port);
+const cache = makeCacheService(client);
+const app = makeServer({ jarvis, cache });
+
+app.listen(PORT, () => {
+  logger.info(`Server is running at http://localhost:${PORT}`);
 });
