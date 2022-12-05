@@ -1,4 +1,5 @@
 import puppeteer from "puppeteer";
+
 import { Track } from "../types";
 import getPropertyValue from "./utils/getPropertyValue";
 

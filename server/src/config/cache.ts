@@ -1,5 +1,3 @@
-import logger from "./logger";
-
 export default function makeCache(client: any) {
   return Object.freeze({
     get,
@@ -12,7 +10,6 @@ export default function makeCache(client: any) {
 
     try {
       await client.connect();
-      logger.info(`Retriving ${key}`);
       data = await client.get(key);
     } catch (error) {
       console.log({ error });
@@ -26,7 +23,6 @@ export default function makeCache(client: any) {
   async function set(key: string, value: any) {
     try {
       await client.connect();
-      logger.info(`Saving ${key}`);
       await client.set(key, JSON.stringify(value));
     } catch (error) {
       throw error;

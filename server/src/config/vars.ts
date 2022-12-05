@@ -1,5 +1,6 @@
-import _StatusCodes from "http-status-codes";
 import env from "dotenv";
+import _StatusCodes from "http-status-codes";
+
 env.config();
 
 export const StatusCodes = _StatusCodes;

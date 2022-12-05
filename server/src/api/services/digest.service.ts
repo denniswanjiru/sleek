@@ -1,6 +1,5 @@
-import logger from "../../config/logger";
+import { Digest } from "../../types";
 import { DataSourceInterface } from "../../intefaces";
-import { Digest, Jarvis } from "../../types";
 
 export default function makeDigestService({
   jarvis,

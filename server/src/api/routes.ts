@@ -1,10 +1,10 @@
-import { Router, Express, Request, Response } from "express";
+import { Router } from "express";
+
 import { DataSourceInterface } from "../intefaces";
-import { Jarvis } from "../types";
-import makeDigestController from "./controllers/digest.controller";
-import makeTrackController from "./controllers/track.controller";
 import validate from "./middlewares/validate.middleware";
 import { getDigest } from "./validations/digest.validations";
+import makeTrackController from "./controllers/track.controller";
+import makeDigestController from "./controllers/digest.controller";
 import { getTrack, listTracks } from "./validations/tracks.validations";
 
 function routes(router: Router, dataSource: DataSourceInterface) {

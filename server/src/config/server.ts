@@ -1,10 +1,8 @@
-import express, { Request, Response } from "express";
+import express from "express";
 import logger from "morgan";
-import routes from "../api/routes";
-import { Jarvis } from "../types";
+
 import { NODE_ENV } from "./vars";
-import { createClient } from "redis";
-import makeCacheService from "./cache";
+import routes from "../api/routes";
 import { DataSourceInterface } from "../intefaces";
 
 function makeServer(dataSource: DataSourceInterface) {
@@ -14,7 +12,6 @@ function makeServer(dataSource: DataSourceInterface) {
   app.use(logger(NODE_ENV));
   app.use(express.json());
   app.use(express.urlencoded({ extended: false }));
-
   app.use("/api/v1", routes(router, dataSource));
 
   return app;

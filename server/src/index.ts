@@ -1,11 +1,10 @@
-import { Request, Response } from "express";
 import { createClient } from "redis";
-import makeCacheService from "./config/cache";
-import logger from "./config/logger";
-import makeServer from "./config/server";
-import { PORT } from "./config/vars";
 
 import makeJarvis from "./jarvis";
+import logger from "./config/logger";
+import { PORT } from "./config/vars";
+import makeServer from "./config/server";
+import makeCacheService from "./config/cache";
 
 const jarvis = makeJarvis();
 const client = createClient();

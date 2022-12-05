@@ -13,9 +13,19 @@
         "sourceType": "module"
     },
     "plugins": [
-        "@typescript-eslint"
+        "@typescript-eslint",
+        "unused-imports"
     ],
      "eslintIgnore": ["/dist"],
     "rules": {
+        "no-console": "warn",
+        "no-unused-expressions": "error",
+        "no-duplicate-imports": "error",
+        "no-unused-vars": "off", // or "@typescript-eslint/no-unused-vars": "off",
+		"unused-imports/no-unused-imports": "error",
+		"unused-imports/no-unused-vars": [
+			"warn",
+			{ "vars": "all" }
+		]
     }
 }

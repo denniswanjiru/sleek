@@ -3,7 +3,7 @@ import { exec } from "child_process";
 
 const _exec = util.promisify(exec);
 
-function makeComand() {
+export default function makeComand() {
   const run = async (command: string) => {
     try {
       const { stdout, stderr } = await _exec(command);
@@ -19,5 +19,3 @@ function makeComand() {
     run,
   });
 }
-
-export default makeComand;

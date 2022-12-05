@@ -1,4 +1,5 @@
 import puppeteer from "puppeteer";
+
 import logger from "../config/logger";
 import { Digest, Playlist } from "../types";
 import getPropertyValue from "./utils/getPropertyValue";

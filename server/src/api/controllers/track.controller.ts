@@ -1,9 +1,8 @@
-import { NextFunction, Request, Response } from "express";
+import { Request, Response } from "express";
+
 import { DataSourceInterface } from "../../intefaces";
-import { Jarvis } from "../../types";
-import makeDigestService from "../services/digest.service";
-import makeTrackService from "../services/track.service";
 import makeApiResponse from "../utils/makeApiResponse";
+import makeTrackService from "../services/track.service";
 
 export default function makeTrackController(dataSource: DataSourceInterface) {
   const service = makeTrackService(dataSource);
@@ -31,8 +30,8 @@ export default function makeTrackController(dataSource: DataSourceInterface) {
       if (query) {
         const encodedQuery =
           typeof query === "string" ? encodeURIComponent(query) : "";
-        const results = await service.search(encodedQuery);
 
+        const results = await service.search(encodedQuery);
         return res.json(makeApiResponse({ data: results }));
       }
 
